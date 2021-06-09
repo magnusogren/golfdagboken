@@ -1,0 +1,36 @@
+<% layout('layouts/boilerplate') %>
+
+<h1>Golfbanor</h1>
+<% for(let golfbana of golfbanor) { %>
+<div class="card mb-3" style="width: 18rem">
+  <div class="card-header"><%= golfbana.title %></div>
+  <ul class="list-group list-group-flush">
+    <% if(golfbana.courses[0]) { %>
+    <li class="list-group-item">
+      <%= golfbana.courses[0] %><br />
+      <%= golfbana.courses[1] ? `${golfbana.courses[1]}` : '' %><br /><%= golfbana.courses[2] ?
+      `${golfbana.courses[2]}`: '' %>
+    </li>
+    <% } %> <% if(golfbana.holes[0] && golfbana.par[0]) { %>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col">
+          <%= golfbana.holes[0] ? `Hål: ${golfbana.holes[0]}` : '' %><%= golfbana.holes[1] ?
+          `/${golfbana.holes[1]}` : '' %><%= golfbana.holes[2] ? `/${golfbana.holes[2]}` : '' %>
+        </div>
+        <div class="col">
+          <%= golfbana.par[0] ? `Par: ${golfbana.par[0]}` : '' %><%= golfbana.par[1] ?
+          `/${golfbana.par[1]}` : '' %><%= golfbana.par[2] ? `/${golfbana.par[2]}` : '' %>
+        </div>
+      </div>
+    </li>
+    <% } %>
+    <li class="list-group-item">
+      <a href="<%=golfbana.homepageurl%>"><%=golfbana.homepageurl%></a>
+    </li>
+    <li class="list-group-item">
+      <a href="<%=golfbana.golfguidenurl%>">Golfguiden</a>
+    </li>
+  </ul>
+</div>
+<% } %>
