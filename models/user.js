@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+const AnvandareSchema = new Schema({
   email: {
     type: String,
     required: true,
@@ -10,6 +10,6 @@ const UserSchema = new Schema({
   },
 });
 
-UserSchema.plugin(passportLocalMongoose);
+AnvandareSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Anvandare', AnvandareSchema);

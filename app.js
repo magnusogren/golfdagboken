@@ -10,7 +10,8 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 
-const golfcourseRoutes = require('./routes/golfcourses');
+const golfbanorRoutes = require('./routes/golfbanor');
+const golfdagbokRoutes = require('./routes/golfdagbok');
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/golfdagboken';
 mongoose.connect(dbUrl, {
@@ -41,7 +42,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
 
-app.use('/golfbanor', golfcourseRoutes);
+app.use('/golfbanor', golfbanorRoutes);
+app.use('/golfdagbok', golfdagbokRoutes);
 
 app.get('/', (req, res) => {
   res.render('start');
