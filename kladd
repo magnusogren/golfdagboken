@@ -1,3 +1,0 @@
-<% } %> <%= golfbana.par[0] ? `Par: ${golfbana.par[0]}` : '' %><%= golfbana.par[1] ? `,
-${golfbana.par[1]}` : '' %><%= golfbana.par[2] ? `, ${golfbana.par[2]}` : '' %><br /><%=
-golfbana.holes[0] ? golfbana.holes[0] : 'okänt' %>
