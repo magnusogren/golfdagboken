@@ -15,7 +15,7 @@ const opts = { toJSON: { virtuals: true } };
 const GolfcourseSchema = new Schema(
   {
     title: String,
-    images: [ImageSchema],
+    // images: [ImageSchema],
     geometry: {
       type: {
         type: String,
@@ -27,21 +27,35 @@ const GolfcourseSchema = new Schema(
         required: true,
       },
     },
-    description: String,
-    holes: [Number],
-    courses: [String],
-    par: [Number],
-    homepageurl: String,
-    golfguidenurl: String,
+    holes: {
+      type: [Number],
+      reqired: false,
+    },
+    courses: {
+      type: [String],
+      reqired: false,
+    },
+    par: {
+      type: [Number],
+      reqired: false,
+    },
+    homepageurl: {
+      type: String,
+      required: true,
+    },
+    golfguidenurl: {
+      type: String,
+      required: true,
+    },
   },
   opts
 );
 
-GolfcourseSchema.virtual('properties.popUpMarkup').get(function () {
-  return `
-  <strong><a href="/golfcourses/${this._id}">${this.title}</a></strong>
-  <p>${this.description.substring(0, 20)}...</p>`;
-});
+// GolfcourseSchema.virtual('properties.popUpMarkup').get(function () {
+//   return `
+//   <strong><a href="/golfcourses/${this._id}">${this.title}</a></strong>
+//   <p>${this.description.substring(0, 20)}...</p>`;
+// });
 
 // GolfcourseSchema.post('findOneAndDelete', async function (doc) {
 //   if (doc) {

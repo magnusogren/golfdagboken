@@ -1,7 +1,6 @@
 <% layout('layouts/boilerplate') %>
 <div class="row">
   <div class="col-md-4">
-    <h1>Golfbanor</h1>
     <% for(let golfbana of golfbanor) { %>
     <div class="card mb-3">
       <div class="card-header"><%= golfbana.title %></div>
@@ -27,21 +26,27 @@
         </li>
         <% } %>
         <li class="list-group-item">
-          <a href="<%=golfbana.homepageurl%>"><%=golfbana.homepageurl%></a>
+          <a href="<%=golfbana.homepageurl%>" target="_blank" rel="noopener noreferrer"
+            ><%=golfbana.homepageurl%></a
+          >
         </li>
         <li class="list-group-item">
-          <a href="<%=golfbana.golfguidenurl%>">Golfguiden</a>
+          <a href="<%=golfbana.golfguidenurl%>" target="_blank" rel="noopener noreferrer"
+            >Golfguiden</a
+          >
         </li>
       </ul>
     </div>
     <% } %>
   </div>
   <div class="col-md-8">
-    <h1>KARTA</h1>
     <div id="map" class="col" style="width: 100%; height: 85vh"></div>
   </div>
 </div>
 
+<script>
+  const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+  const golfbanor = {features: <%- JSON.stringify(golfbanor)%>};
+</script>
+
 <script src="/js/golfbanorKarta.js"></script>
-
-
