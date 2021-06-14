@@ -14,38 +14,80 @@ const opts = { toJSON: { virtuals: true } };
 
 const GolfbanaSchema = new Schema(
   {
-    title: String,
+    name: String,
     // images: [ImageSchema],
     geometry: {
       type: {
         type: String,
         enum: ['Point'],
-        reqired: true,
       },
       coordinates: {
         type: [Number],
-        required: true,
       },
     },
-    holes: {
-      type: [Number],
+    hal: {
+      type: String,
       reqired: false,
     },
-    courses: {
-      type: [String],
+    // bana1: {
+    //   type: [String],
+    //   reqired: false,
+    // },
+    // bana2: {
+    //   type: [String],
+    //   reqired: false,
+    // },
+    // bana3: {
+    //   type: [String],
+    //   reqired: false,
+    // },
+    // baninfo1: {
+    //   type: [String],
+    //   reqired: false,
+    // },
+    // baninfo2: {
+    //   type: [String],
+    //   reqired: false,
+    // },
+    // baninfo3: {
+    //   type: [String],
+    //   reqired: false,
+    // },
+    // antalhal1: {
+    //   type: [String],
+    //   reqired: false,
+    // },
+    // antalhal2: {
+    //   type: [String],
+    //   reqired: false,
+    // },
+    // antalhal3: {
+    //   type: [String],
+    //   reqired: false,
+    // },
+    vagbeskrivning: {
+      type: String,
+      reqired: false,
+    },
+    epost: {
+      type: String,
+      reqired: false,
+    },
+    info: {
+      type: String,
       reqired: false,
     },
     par: {
-      type: [Number],
+      type: String,
       reqired: false,
     },
-    homepageurl: {
+    hemsida_url: {
       type: String,
-      required: true,
+      required: false,
     },
     golfguidenurl: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   opts

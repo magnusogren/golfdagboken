@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const golfbanor = require('./golfbanor');
+const { golfbanor } = require('./golfbanor.js');
 const Golfbana = require('../models/golfbana');
 
 mongoose.connect('mongodb://localhost:27017/golfdagboken', {
@@ -16,21 +16,24 @@ db.once('open', () => {
 
 const seedDB = async () => {
   await Golfbana.deleteMany({});
+  console.log(golfbanor.length);
   for (let i = 0; i < golfbanor.length; i++) {
     const golfbana = new Golfbana({
-      title: golfbanor[i].golfbana ? golfbanor[i].golfbana : '',
-      holes: golfbanor[i].hål ? golfbanor[i].hål : [],
-      courses: golfbanor[i].banor ? golfbanor[i].banor : [],
-      par: golfbanor[i].par ? golfbanor[i].par : [],
-      homepageurl: golfbanor[i].hemsida ? golfbanor[i].hemsida : '',
-      golfguidenurl: golfbanor[i].golfguiden ? golfbanor[i].golfguiden : '',
+      name: golfbanor[i].name ? golfbanor[i].name : '',
+      hal: golfbanor[i].hal ? golfbanor[i].hal : '',
+      vagbeskrivning: golfbanor[i].vagbeskrivning ? golfbanor[i].vagbeskrivning : '',
+      info: golfbanor[i].info ? golfbanor[i].info : '',
+      par: golfbanor[i].par ? golfbanor[i].par : '',
+      hemsida_url: golfbanor[i].hemsida_url ? golfbanor[i].hemsida_url : '',
+      epost: golfbanor[i].epost ? golfbanor[i].epost : '',
+      golfguidenurl: golfbanor[i].golfguidenurl ? golfbanor[i].golfguidenurl : '',
       geometry: {
         type: 'Point',
         coordinates: golfbanor[i].long ? [golfbanor[i].long, golfbanor[i].lat] : [],
       },
     });
     await golfbana.save();
-    console.log(golfbana);
+    // console.log(golfbana);
   }
 };
 

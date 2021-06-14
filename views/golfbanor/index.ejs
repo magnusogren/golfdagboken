@@ -3,43 +3,13 @@
   <div class="col-md-4">
     <% for(let golfbana of golfbanor) { %>
     <div class="card mb-3">
-      <div class="card-header"><%= golfbana.title %></div>
-      <ul class="list-group list-group-flush">
-        <% if(golfbana.courses[0]) { %>
-        <li class="list-group-item">
-          <%= golfbana.courses[0] %><br />
-          <%= golfbana.courses[1] ? `${golfbana.courses[1]}` : '' %><br /><%= golfbana.courses[2] ?
-          `${golfbana.courses[2]}`: '' %>
-        </li>
-        <% } %> <% if(golfbana.holes[0] && golfbana.par[0]) { %>
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col">
-              <%= golfbana.holes[0] ? `Hål: ${golfbana.holes[0]}` : '' %><%= golfbana.holes[1] ?
-              `/${golfbana.holes[1]}` : '' %><%= golfbana.holes[2] ? `/${golfbana.holes[2]}` : '' %>
-            </div>
-            <div class="col">
-              <%= golfbana.par[0] ? `Par: ${golfbana.par[0]}` : '' %><%= golfbana.par[1] ?
-              `/${golfbana.par[1]}` : '' %><%= golfbana.par[2] ? `/${golfbana.par[2]}` : '' %>
-            </div>
-          </div>
-        </li>
-        <% } %>
-        <li class="list-group-item">
-          <a href="<%=golfbana.homepageurl%>" target="_blank" rel="noopener noreferrer"
-            ><%=golfbana.homepageurl%></a
-          >
-        </li>
-        <li class="list-group-item">
-          <a href="<%=golfbana.golfguidenurl%>" target="_blank" rel="noopener noreferrer"
-            >Golfguiden</a
-          >
-        </li>
-      </ul>
+      <div class="card-header"><%=golfbana.hal%></div>
+      <p><%= golfbana.name %></p>
     </div>
     <% } %>
   </div>
   <div class="col-md-8">
+    <h1>KARTA</h1>
     <div id="map" class="col" style="width: 100%; height: 85vh"></div>
   </div>
 </div>
