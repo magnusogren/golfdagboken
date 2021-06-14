@@ -2,5 +2,16 @@
 <h1>Golfdagbok</h1>
 
 <% for(let inlagg of golfdagbok) { %>
-<p><%= inlagg.bana %></p>
+<div class="card mb-3" style="width: 18rem">
+  <div class="card-header">
+    <%= inlagg.datum.toLocaleDateString()%>
+    <a class="btn btn-sm btn-success position-absolute end-0 me-1" href="#">Visa</a>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%=inlagg.bana%></li>
+    <li class="list-group-item">Poäng: <%= inlagg.poang %></li>
+    <li class="list-group-item">Betyg: <%= inlagg.sammanfattningBetyg %></li>
+  </ul>
+</div>
+
 <% } %>

@@ -9,6 +9,7 @@ const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const dateFormat = require('dateformat');
 
 const golfbanorRoutes = require('./routes/golfbanor');
 const golfdagbokRoutes = require('./routes/golfdagbok');

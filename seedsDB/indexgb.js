@@ -17,7 +17,7 @@ db.once('open', () => {
 const seedDB = async () => {
   await Golfbana.deleteMany({});
   for (let i = 0; i < golfbanor.length; i++) {
-    const course = new Golfbana({
+    const golfbana = new Golfbana({
       title: golfbanor[i].golfbana ? golfbanor[i].golfbana : '',
       holes: golfbanor[i].hål ? golfbanor[i].hål : [],
       courses: golfbanor[i].banor ? golfbanor[i].banor : [],
@@ -29,8 +29,8 @@ const seedDB = async () => {
         coordinates: golfbanor[i].long ? [golfbanor[i].long, golfbanor[i].lat] : [],
       },
     });
-    await course.save();
-    console.log(course);
+    await golfbana.save();
+    console.log(golfbana);
   }
 };
 
