@@ -12,7 +12,7 @@ ImageSchema.virtual('thumbnail').get(function () {
 
 const opts = { toJSON: { virtuals: true } };
 
-const GolfcourseSchema = new Schema(
+const GolfbanaSchema = new Schema(
   {
     title: String,
     // images: [ImageSchema],
@@ -67,4 +67,4 @@ const GolfcourseSchema = new Schema(
 //   }
 // });
 
-module.exports = mongoose.model('Golfcourse', GolfcourseSchema);
+module.exports = mongoose.model('Golfbana', GolfbanaSchema);

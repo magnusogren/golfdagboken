@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Golfcourse = require('../models/golfcourse');
+const Golfbana = require('../models/golfbana');
 
 router.get('/', async (req, res) => {
-  const golfbanor = await Golfcourse.find({});
+  const golfbanor = await Golfbana.find({});
   console.log(golfbanor);
   res.render('golfbanor/index', { golfbanor });
 });

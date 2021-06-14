@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const golfbanor = require('./golfbanor');
-const Golfcourse = require('../models/golfcourse');
+const Golfbana = require('../models/golfbana');
 
 mongoose.connect('mongodb://localhost:27017/golfdagboken', {
   useNewUrlParser: true,
@@ -15,9 +15,9 @@ db.once('open', () => {
 });
 
 const seedDB = async () => {
-  await Golfcourse.deleteMany({});
+  await Golfbana.deleteMany({});
   for (let i = 0; i < golfbanor.length; i++) {
-    const course = new Golfcourse({
+    const course = new Golfbana({
       title: golfbanor[i].golfbana ? golfbanor[i].golfbana : '',
       holes: golfbanor[i].hål ? golfbanor[i].hål : [],
       courses: golfbanor[i].banor ? golfbanor[i].banor : [],

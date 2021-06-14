@@ -1,2 +1,6 @@
 <% layout('layouts/boilerplate') %>
 <h1>Golfdagbok</h1>
+
+<% for(let inlagg of golfdagbok) { %>
+<p><%= inlagg.bana %></p>
+<% } %>
