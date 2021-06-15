@@ -10,4 +10,11 @@ router.get('/', async (req, res) => {
   res.render('golfdagbok/index', { golfbanor, golfdagbok });
 });
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const inlagg = await Golfdagbok.findById(id);
+  console.log(inlagg);
+  res.render('golfdagbok/visa', { inlagg });
+});
+
 module.exports = router;

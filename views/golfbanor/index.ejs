@@ -5,9 +5,19 @@
     <div class="card mb-3">
       <div class="card-header"><%=golfbana.name%></div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"></li>
-        <li class="list-group-item"></li>
-        <li class="list-group-item"></li>
+        <li class="list-group-item">
+          <a href="<%=golfbana.hemsida_url%>" target="_blank" rel="noopener noreferrer"
+            ><%=golfbana.hemsida_url%></a
+          >
+        </li>
+        <li class="list-group-item">
+          <a href="<%=golfbana.golfguidenurl%>" target="_blank" rel="noopener noreferrer"
+            >Golfguiden</a
+          >
+        </li>
+        <li class="list-group-item">
+          <a class="btn btn-outline-primary d-flex" href="#">Visa mer</a>
+        </li>
       </ul>
     </div>
     <% } %>

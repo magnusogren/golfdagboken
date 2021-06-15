@@ -25,10 +25,10 @@ const GolfbanaSchema = new Schema(
         type: [Number],
       },
     },
-    // hal: {
-    //   type: String,
-    //   reqired: false,
-    // },
+    hal: {
+      type: String,
+      reqired: false,
+    },
     // bana1: {
     //   type: [String],
     //   reqired: false,
@@ -69,6 +69,10 @@ const GolfbanaSchema = new Schema(
       type: String,
       reqired: false,
     },
+    omklubb: {
+      type: String,
+      reqired: false,
+    },
     epost: {
       type: String,
       reqired: false,
@@ -93,11 +97,14 @@ const GolfbanaSchema = new Schema(
   opts
 );
 
-// GolfcourseSchema.virtual('properties.popUpMarkup').get(function () {
-//   return `
-//   <strong><a href="/golfcourses/${this._id}">${this.title}</a></strong>
-//   <p>${this.description.substring(0, 20)}...</p>`;
-// });
+{
+  /* <a href="/golfbanor/${this._id}"></a> */
+}
+
+GolfbanaSchema.virtual('properties.kartPopUp').get(function () {
+  return `<strong>${this.name}</strong>
+  <p>${this.omklubb.substring(0, 40)}...</p>`;
+});
 
 // GolfcourseSchema.post('findOneAndDelete', async function (doc) {
 //   if (doc) {

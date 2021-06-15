@@ -22,6 +22,7 @@ const seedDB = async () => {
       name: golfbanor[i].name ? golfbanor[i].name : '',
       hal: golfbanor[i].hal ? golfbanor[i].hal : '',
       vagbeskrivning: golfbanor[i].vagbeskrivning ? golfbanor[i].vagbeskrivning : '',
+      omklubb: golfbanor[i].omklubb ? golfbanor[i].omklubb : '',
       info: golfbanor[i].info ? golfbanor[i].info : '',
       par: golfbanor[i].par ? golfbanor[i].par : '',
       hemsida_url: golfbanor[i].hemsida_url ? golfbanor[i].hemsida_url : '',
@@ -29,7 +30,7 @@ const seedDB = async () => {
       golfguidenurl: golfbanor[i].golfguidenurl ? golfbanor[i].golfguidenurl : '',
       geometry: {
         type: 'Point',
-        coordinates: golfbanor[i].long ? [golfbanor[i].long, golfbanor[i].lat] : [0, 0],
+        coordinates: golfbanor[i].long ? [golfbanor[i].long, golfbanor[i].lat] : [0, -90],
       },
     });
     await golfbana.save();

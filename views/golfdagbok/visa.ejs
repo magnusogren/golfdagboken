@@ -1,0 +1,23 @@
+<% layout('layouts/boilerplate') %>
+<h1>Inlägg</h1>
+<div class="card" style="width: 30rem">
+  <img src="<%= inlagg.bilder[0].url %> " class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title"><%= inlagg.bana %></h5>
+    <p class="card-text"><%= inlagg.noteringar %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Datum: <%= inlagg.datum.toLocaleDateString() %></li>
+    <li class="list-group-item">Antal hål spelade: <%= inlagg.antalHal %></li>
+    <li class="list-group-item">Banans Par: <%= inlagg.banansPar %></li>
+    <li class="list-group-item">Bruttoscore: <%= inlagg.bruttoScore %></li>
+    <li class="list-group-item">Nettoscore: <%= inlagg.nettoScore %></li>
+    <li class="list-group-item">Poäng: <%= inlagg.poang %></li>
+    <li class="list-group-item">
+      Väder: <%= inlagg.vader %>, <%= inlagg.vindstyrka %>, temperatur: <%= inlagg.temperatur %>°C
+    </li>
+    <li class="list-group-item">Banans skick: <%= inlagg.banansSkick %></li>
+    <li class="list-group-item">Betyg på rundan: <%= inlagg.sammanfattningBetyg %></li>
+    <li class="list-group-item">Medspelare: <%= inlagg.medspelare %></li>
+  </ul>
+</div>

@@ -91,6 +91,7 @@ map.on('load', function () {
   // the location of the feature, with
   // description HTML from its properties.
   map.on('click', 'unclustered-point', function (e) {
+    const { kartPopUp } = e.features[0].properties;
     const coordinates = e.features[0].geometry.coordinates.slice();
 
     // Ensure that if the map is zoomed out such that
@@ -100,7 +101,7 @@ map.on('load', function () {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    new mapboxgl.Popup().setLngLat(coordinates).setHTML('golfbana').addTo(map);
+    new mapboxgl.Popup().setLngLat(coordinates).setHTML(kartPopUp).addTo(map);
   });
 
   map.on('mouseenter', 'clusters', function () {

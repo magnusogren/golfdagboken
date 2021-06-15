@@ -5,7 +5,11 @@
 <div class="card mb-3" style="width: 18rem">
   <div class="card-header">
     <%= inlagg.datum.toLocaleDateString()%>
-    <a class="btn btn-sm btn-success position-absolute end-0 me-1" href="#">Visa</a>
+    <a
+      class="btn btn-sm btn-success position-absolute end-0 me-1"
+      href="/golfdagbok/<%=inlagg._id%> "
+      >Visa</a
+    >
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><%=inlagg.bana%></li>
