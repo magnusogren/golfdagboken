@@ -6,7 +6,7 @@ const BilderSchema = new Schema({
   filename: String,
 });
 
-const GolfdagbokSchema = new Schema({
+const GolfrundaSchema = new Schema({
   datum: Date,
   bana: String,
   antalHal: Number,
@@ -17,7 +17,7 @@ const GolfdagbokSchema = new Schema({
   nettoScore: Number,
   poang: Number,
   vader: String,
-  vindstyrka: String,
+  vindstyrka: Number,
   temperatur: Number,
   noteringar: String,
   banansSkick: Number,
@@ -35,4 +35,4 @@ const GolfdagbokSchema = new Schema({
   // },
 });
 
-module.exports = mongoose.model('Golfdagbok', GolfdagbokSchema);
+module.exports = mongoose.model('Golfrunda', GolfrundaSchema);

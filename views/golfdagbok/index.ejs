@@ -1,21 +1,20 @@
 <% layout('layouts/boilerplate') %>
 <h1>Golfdagbok</h1>
-
-<% for(let inlagg of golfdagbok) { %>
-<div class="card mb-3" style="width: 18rem">
-  <div class="card-header">
-    <%= inlagg.datum.toLocaleDateString()%>
-    <a
-      class="btn btn-sm btn-success position-absolute end-0 me-1"
-      href="/golfdagbok/<%=inlagg._id%> "
-      >Visa</a
-    >
+<a class="btn btn-outline-primary mb-3" href="/golfdagbok/ny">Ny golfrunda</a>
+<div class="col-md-4">
+  <% for(let golfrunda of golfrundor) { %>
+  <div class="card mb-3">
+    <div class="card-header">
+      <%= golfrunda.datum.toLocaleDateString()%>
+      <a class="btn btn-sm btn-outline-primary float-end" href="/golfdagbok/<%=golfrunda._id%> "
+        >Visa</a
+      >
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%=golfrunda.bana%></li>
+      <li class="list-group-item">Poäng: <%= golfrunda.poang %></li>
+      <li class="list-group-item">Betyg: <%= golfrunda.sammanfattningBetyg %></li>
+    </ul>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%=inlagg.bana%></li>
-    <li class="list-group-item">Poäng: <%= inlagg.poang %></li>
-    <li class="list-group-item">Betyg: <%= inlagg.sammanfattningBetyg %></li>
-  </ul>
+  <% } %>
 </div>
-
-<% } %>
