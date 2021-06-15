@@ -38,7 +38,7 @@ map.on('load', function () {
       //   * Blue, 20px circles when point count is less than 100
       //   * Yellow, 30px circles when point count is between 100 and 750
       //   * Pink, 40px circles when point count is greater than or equal to 750
-      'circle-color': ['step', ['get', 'point_count'], '#fff', 10, '#dee2e6', 20, '#ced4da'],
+      'circle-color': ['step', ['get', 'point_count'], '#fff', 10, '#dee2e6', 20, '#adb5bd'],
       'circle-radius': ['step', ['get', 'point_count'], 20, 100, 30, 750, 40],
       'circle-stroke-width': 1,
       'circle-stroke-color': '#000',
@@ -63,10 +63,10 @@ map.on('load', function () {
     source: 'golfbanor',
     filter: ['!', ['has', 'point_count']],
     paint: {
-      'circle-color': '#000',
-      'circle-radius': 4,
-      'circle-stroke-width': 1,
-      'circle-stroke-color': '#fff',
+      'circle-color': '#fff',
+      'circle-radius': 5,
+      'circle-stroke-width': 2,
+      'circle-stroke-color': '#000',
     },
   });
 

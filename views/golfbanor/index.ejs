@@ -3,13 +3,16 @@
   <div class="col-md-4">
     <% for(let golfbana of golfbanor) { %>
     <div class="card mb-3">
-      <div class="card-header"><%=golfbana.hal%></div>
-      <p><%= golfbana.name %></p>
+      <div class="card-header"><%=golfbana.name%></div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
+      </ul>
     </div>
     <% } %>
   </div>
   <div class="col-md-8">
-    <h1>KARTA</h1>
     <div id="map" class="col" style="width: 100%; height: 85vh"></div>
   </div>
 </div>

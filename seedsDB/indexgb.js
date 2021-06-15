@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { golfbanor } = require('./golfbanor.js');
+const golfbanor = require('./golfbanor');
 const Golfbana = require('../models/golfbana');
 
 mongoose.connect('mongodb://localhost:27017/golfdagboken', {
@@ -29,7 +29,7 @@ const seedDB = async () => {
       golfguidenurl: golfbanor[i].golfguidenurl ? golfbanor[i].golfguidenurl : '',
       geometry: {
         type: 'Point',
-        coordinates: golfbanor[i].long ? [golfbanor[i].long, golfbanor[i].lat] : [],
+        coordinates: golfbanor[i].long ? [golfbanor[i].long, golfbanor[i].lat] : [0, 0],
       },
     });
     await golfbana.save();

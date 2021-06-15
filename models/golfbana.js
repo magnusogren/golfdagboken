@@ -25,10 +25,10 @@ const GolfbanaSchema = new Schema(
         type: [Number],
       },
     },
-    hal: {
-      type: String,
-      reqired: false,
-    },
+    // hal: {
+    //   type: String,
+    //   reqired: false,
+    // },
     // bana1: {
     //   type: [String],
     //   reqired: false,

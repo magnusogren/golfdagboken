@@ -1,4 +1,4 @@
-module.exports.golfbanor = [
+module.exports = [
   {
     name: 'A6 Golfklubb',
     golfguidenurl: 'https://golfguiden.svenskgolf.se/a6-golfklubb',
