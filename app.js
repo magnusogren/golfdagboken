@@ -10,6 +10,7 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const dateFormat = require('dateformat');
+const ExpressError = require('./utils/ExpressError');
 
 const golfbanorRoutes = require('./routes/golfbanor');
 const golfdagbokRoutes = require('./routes/golfdagbok');
@@ -48,6 +49,16 @@ app.use('/golfdagbok', golfdagbokRoutes);
 
 app.get('/', (req, res) => {
   res.render('start');
+});
+
+app.all('*', (req, res, next) => {
+  next(new ExpressError('Page Not Found', 404));
+});
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = 'Oh no, Something Went Wrong';
+  res.status(statusCode).render('error', { err });
 });
 
 const port = process.env.PORT || 3000;

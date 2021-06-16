@@ -11,7 +11,12 @@ const GolfrundaSchema = new Schema({
   bana: String,
   antalHal: Number,
   banansPar: Number,
-  tee: String,
+  tee: {
+    type: {
+      type: String,
+      enum: ['Gul', 'Röd'],
+    },
+  },
   langd: String,
   bruttoScore: Number,
   nettoScore: Number,

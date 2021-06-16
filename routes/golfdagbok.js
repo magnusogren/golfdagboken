@@ -3,6 +3,7 @@ const router = express.Router();
 const Golfrunda = require('../models/golfrunda');
 const Golfbana = require('../models/golfbana');
 const { updateCampground } = require('../../YelpCamp/magnusVersion/controllers/campgrounds');
+const { valideraGolfrunda } = require('../middleware');
 
 router.get('/', async (req, res) => {
   const golfbanor = await Golfbana.find({});

@@ -19,7 +19,7 @@ module.exports.datum = [
 // module.exports.bana = [];
 // module.exports.antalHal = [];
 // module.exports.banansPar = [];
-module.exports.tee = ['gul', 'röd'];
+module.exports.tee = ['Gul', 'Röd'];
 module.exports.langd = [
   '5645m',
   '4234m',
@@ -41,7 +41,7 @@ module.exports.langd = [
 module.exports.bruttoScore = ['andra'];
 module.exports.nettoScore = ['andra'];
 module.exports.poang = ['andra'];
-module.exports.vader = ['soligt', 'molning', 'blåsigt', 'växlands molnighet', 'regnigt'];
+module.exports.vader = ['Soligt', 'Molnigt', 'Blåsigt', 'Växlande molnighet', 'Regnigt'];
 module.exports.vindstyrka = ['andra'];
 module.exports.temperatur = ['andra'];
 module.exports.noteringar = ['andra'];
