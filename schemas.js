@@ -24,21 +24,24 @@ const Joi = require('joi'); //ändra namn till BaseJoi
 // const Joi = BaseJoi.extend(extension);
 
 module.exports.golfrundaSchema = Joi.object({
-  golfbana: Joi.object({
+  golfrunda: Joi.object({
     datum: Joi.date().required(), //Kolla upp escapeHTML på några st.
     bana: Joi.string().required(), //Kolla upp escapeHTML på några st.
     antalHal: Joi.number().required().min(0).max(100),
-    banansPar: Joi.number().min(0).max(100),
+    banansPar: Joi.number().min(0).max(100).allow('', null),
     tee: Joi.string(),
-    langd: Joi.number().min(0),
-    bruttoScore: Joi.number().min(0),
-    nettoScore: Joi.number().min(0),
+    langd: Joi.number().min(0).allow('', null),
+    bruttoScore: Joi.number().min(0).allow('', null),
+    nettoScore: Joi.number().min(0).allow('', null),
     poang: Joi.number().min(0),
-    vader: Joi.string(),
-    vindstyrka: Joi.number().min(0),
-    temperatur: Joi.number().min(0),
+    vader: Joi.string().allow('', null),
+    vindstyrka: Joi.number().min(0).allow('', null),
+    temperatur: Joi.number().min(0).allow('', null),
     noteringar: Joi.string().required(),
-    banansSkick: Joi.number().min(1).max(5),
+    medspelare: Joi.string().allow('', null),
+    spelare: Joi.string(),
+    url: Joi.string().allow('', null),
+    banansSkick: Joi.number().min(1).max(5).allow('', null),
     sammanfattningBetyg: Joi.number().min(1).max(5),
   }).required(),
 });

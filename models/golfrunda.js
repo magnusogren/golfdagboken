@@ -27,7 +27,8 @@ const GolfrundaSchema = new Schema({
   noteringar: String,
   banansSkick: Number,
   sammanfattningBetyg: Number,
-  bilder: [BilderSchema],
+  // bilder: [BilderSchema],
+  url: String,
   spelare: String,
   medspelare: String,
   // spelare: {

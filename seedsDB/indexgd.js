@@ -37,10 +37,11 @@ const seedDB = async () => {
         'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus, sequi fuga ut error porro magnam quas consequuntur.',
       banansSkick: Math.floor(Math.random() * 5) + 1,
       sammanfattningBetyg: Math.floor(Math.random() * 5) + 1,
-      bilder: {
-        url: sample(bilder),
-        filename: 'bildnamn',
-      },
+      url: sample(bilder),
+      // bilder: {
+      //   url: sample(bilder),
+      //   filename: 'bildnamn',
+      // },
       spelare: 'Magnus Ögren',
       medspelare: sample(medspelare),
     });
