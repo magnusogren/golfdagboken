@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %>
-<h1>Ny golfrunda</h1>
-<form class="row g-3" method="POST" action="/golfdagbok">
+<h1>Ändra golfrunda</h1>
+<form class="row g-3" method="POST" action="/golfdagbok/<%=golfrunda._id%>?_method=PUT">
   <div class="col-md-4">
     <label for="bana" class="form-label">Golfklubb</label>
     <select
@@ -9,7 +9,7 @@
       name="golfrunda[bana]"
       aria-label="Default select example"
     >
-      <option selected disabled hidden>Välj golfklubb</option>
+      <option selected><%=golfrunda.bana%></option>
       <% for(let golfbana of golfbanor) { %>
       <option value="<%= golfbana.name %>"><%= golfbana.name %></option>
       <% } %>
@@ -17,20 +17,40 @@
   </div>
   <div class="col-md-2">
     <label class="form-label" for="datum">Datum</label>
-    <input class="form-control" type="date" id="datum" name="golfrunda[datum]" required />
+    <input
+      class="form-control"
+      type="date"
+      id="datum"
+      name="golfrunda[datum]"
+      value="<%=golfrunda.datum.toLocaleDateString()%>"
+      required
+    />
   </div>
   <div class="col-md-2">
     <label class="form-label" for="antalHal">Antal spelade hål:</label>
-    <input class="form-control" type="text" id="antalHal" name="golfrunda[antalHal]" required />
+    <input
+      class="form-control"
+      type="text"
+      id="antalHal"
+      name="golfrunda[antalHal]"
+      value="<%=golfrunda.antalHal%>"
+      required
+    />
   </div>
   <div class="col-md-2">
     <label class="form-label" for="banansPar">Banans par:</label>
-    <input class="form-control" type="text" id="banansPar" name="golfrunda[banansPar]" />
+    <input
+      class="form-control"
+      type="text"
+      id="banansPar"
+      name="golfrunda[banansPar]"
+      value="<%=golfrunda.banansPar%>"
+    />
   </div>
   <div class="col-md-2">
     <label for="tee" class="form-label">Tee</label>
     <select class="form-select" id="tee" name="golfrunda[tee]" aria-label="Default select example">
-      <option selected disabled hidden>Välj ett alternativ</option>
+      <option selected><%=golfrunda.tee%></option>
       <option value="Röd">Röd</option>
       <option value="Gul">Gul</option>
     </select>
@@ -43,23 +63,48 @@
       id="langd"
       name="golfrunda[langd]"
       placeholder="(meter)"
+      value="<%=golfrunda.langd%>"
     />
   </div>
   <div class="col-md-1">
     <label class="form-label" for="bruttoScore">Bruttoscore:</label>
-    <input class="form-control" type="text" id="bruttoScore" name="golfrunda[bruttoScore]" />
+    <input
+      class="form-control"
+      type="text"
+      id="bruttoScore"
+      name="golfrunda[bruttoScore]"
+      value="<%=golfrunda.bruttoScore%>"
+    />
   </div>
   <div class="col-md-1">
     <label class="form-label" for="nettoScore">Nettoscore:</label>
-    <input class="form-control" type="text" id="nettoScore" name="golfrunda[nettoScore]" />
+    <input
+      class="form-control"
+      type="text"
+      id="nettoScore"
+      name="golfrunda[nettoScore]"
+      value="<%=golfrunda.nettoScore%>"
+    />
   </div>
   <div class="col-md-1">
     <label class="form-label" for="poang">Poäng:</label>
-    <input class="form-control" type="text" id="poang" name="golfrunda[poang]" />
+    <input
+      class="form-control"
+      type="text"
+      id="poang"
+      name="golfrunda[poang]"
+      value="<%=golfrunda.poang%>"
+    />
   </div>
   <div class="col-md-3">
     <label class="form-label" for="vader">Väder:</label>
-    <input class="form-control" type="text" id="vader" name="golfrunda[vader]" />
+    <input
+      class="form-control"
+      type="text"
+      id="vader"
+      name="golfrunda[vader]"
+      value="<%=golfrunda.vader%>"
+    />
   </div>
   <div class="col-md-2">
     <label class="form-label" for="temperatur">Temperatur:</label>
@@ -69,6 +114,7 @@
       id="temperatur"
       name="golfrunda[temperatur]"
       placeholder="(°C)"
+      value="<%=golfrunda.temperatur%>"
     />
   </div>
   <div class="col-md-2">
@@ -79,11 +125,19 @@
       id="vindstyrka"
       name="golfrunda[vindstyrka]"
       placeholder="(m/s)"
+      value="<%=golfrunda.vindstyrka%>"
     />
   </div>
   <div class="col-md-12">
     <label class="form-label" for="noteringar">Egna noteringar och kommentarer:</label>
-    <input class="form-control" type="text" id="noteringar" name="golfrunda[noteringar]" required />
+    <input
+      class="form-control"
+      type="text"
+      id="noteringar"
+      name="golfrunda[noteringar]"
+      value="<%=golfrunda.noteringar%>"
+      required
+    />
   </div>
   <div class="col-md-2">
     <label for="banansSkick" class="form-label">Banans Skick</label>
@@ -93,7 +147,7 @@
       name="golfrunda[banansSkick]"
       aria-label="Default select example"
     >
-      <option selected disabled hidden>Välj ett alternativ</option>
+      <option selected><%=golfrunda.banansSkick%></option>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -110,7 +164,7 @@
       aria-label="Default select example"
       required
     >
-      <option selected disabled hidden>Välj ett alternativ</option>
+      <option selected><%=golfrunda.sammanfattningBetyg%></option>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -120,16 +174,65 @@
   </div>
   <div class="col-md-8">
     <label class="form-label" for="medspelare">Medspelare:</label>
-    <input class="form-control" type="text" id="medspelare" name="golfrunda[medspelare]" />
+    <input
+      class="form-control"
+      type="text"
+      id="medspelare"
+      name="golfrunda[medspelare]"
+      value="<%=golfrunda.medspelare%>"
+    />
   </div>
   <div class="col-md-8">
     <label class="form-label" for="bilder">Bilder (url):</label>
-    <input class="form-control" type="text" id="bilder" name="url" />
+    <input
+      class="form-control"
+      type="text"
+      id="bilder"
+      name="url"
+      value="<%=golfrunda.bilder[0].url%>"
+    />
   </div>
   <div class="col-md-4">
     <label class="form-label" for="spelare">Spelare:</label>
-    <input class="form-control" type="text" id="spelare" name="golfrunda[spelare]" />
+    <input
+      class="form-control"
+      type="text"
+      id="spelare"
+      name="golfrunda[spelare]"
+      value="<%=golfrunda.spelare%>"
+    />
   </div>
 
-  <button class="btn btn-outline-primary">Spara</button>
+  <button
+    type="button"
+    class="btn btn-outline-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#Modal"
+  >
+    Uppdatera
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">Uppdatera Golfrunda</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">Är du säker att du vill uppdatera din golfrunda?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Jag har ångrat mig!
+          </button>
+          <button type="submit" class="btn btn-primary">Uppdatera</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>

@@ -102,7 +102,7 @@ const GolfbanaSchema = new Schema(
 }
 
 GolfbanaSchema.virtual('properties.kartPopUp').get(function () {
-  return `<strong>${this.name}</strong>
+  return `<a href="/golfbanor/${this._id}"><strong>${this.name}</strong></a>
   <p>${this.omklubb.substring(0, 40)}...</p>`;
 });
 

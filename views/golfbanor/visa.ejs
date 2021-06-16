@@ -1,0 +1,30 @@
+<% layout('layouts/boilerplate') %>
+<h1>Golfbana</h1>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= golfbana.name %></h5>
+        <p class="card-text"><%= golfbana.omklubb %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Antal hål: <%=golfbana.hal%>, Par: <%= golfbana.par %></li>
+        <li class="list-group-item">
+          Hemsida: <a href="<%= golfbana.hemsida_url %>"><%= golfbana.hemsida_url %></a>
+        </li>
+        <li class="list-group-item">Epost: <%= golfbana.epost %></li>
+        <li class="list-group-item">Vägbeskrivning: <%= golfbana.vagbeskrivning %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="mb-3" id="map" style="height: 300px"></div>
+  </div>
+</div>
+
+<script>
+  const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+  const golfbana = <%- JSON.stringify(golfbana)%>;
+</script>
+
+<script src="/js/kartaEnBana.js"></script>

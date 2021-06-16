@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const Golfrunda = require('../models/golfrunda');
 const Golfbana = require('../models/golfbana');
+const { updateCampground } = require('../../YelpCamp/magnusVersion/controllers/campgrounds');
 
 router.get('/', async (req, res) => {
   const golfbanor = await Golfbana.find({});
   const golfrundor = await Golfrunda.find({});
   // console.log(golfdagbok);
-  res.render('golfdagbok/index', { golfbanor, golfrundor });
+  res.render('golfdagbok', { golfbanor, golfrundor });
 });
 
 router.get('/ny', async (req, res) => {
@@ -23,22 +24,38 @@ router.post('/', async (req, res) => {
   console.log(golfrunda);
   res.redirect('golfdagbok');
 });
-// campground.images = req.files.map((f) => ({ url: f.path, filename: f.filename }));
-
-// const campground = new Campground(req.body.campground);
-//   campground.geometry = geoData.body.features[0].geometry;
-//   campground.images = req.files.map((f) => ({ url: f.path, filename: f.filename }));
-//   campground.author = req.user._id;
-//   await campground.save();
-//   console.log(campground);
-//   req.flash('success', 'Successfully made a new campground');
-//   res.redirect(`/campgrounds/${campground._id}`);
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
   const golfrunda = await Golfrunda.findById(id);
-  console.log(golfrunda);
+  // console.log(golfrunda);
   res.render('golfdagbok/visa', { golfrunda });
 });
 
+router.get('/:id/andra', async (req, res) => {
+  const { id } = req.params;
+  const golfbanor = await Golfbana.find({});
+  const golfrunda = await Golfrunda.findById(id);
+  // console.log(golfrunda);
+  res.render('golfdagbok/andra', { golfrunda, golfbanor });
+});
+
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const updateradgolfrunda = await Golfrunda.findByIdAndUpdate(id, { ...req.body.golfrunda });
+  console.log(updateradgolfrunda);
+  await updateradgolfrunda.save();
+  res.redirect(`/golfdagbok/${updateradgolfrunda._id}`);
+});
+
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  await Golfrunda.findByIdAndDelete(id);
+  res.redirect('/golfdagbok');
+});
+
 module.exports = router;
+
+// const { id } = req.params;
+//   console.log(req.body);
+//   const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground });
