@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
+	require('dotenv').config();
 }
 
 const express = require('express');
@@ -18,19 +18,20 @@ const Anvandare = require('./models/anvandare');
 const golfbanorRoutes = require('./routes/golfbanor');
 const golfdagbokRoutes = require('./routes/golfdagbok');
 const omdomenRoutes = require('./routes/omdomen');
+const anvandareRoutes = require('./routes/anvandare');
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/golfdagboken';
 mongoose.connect(dbUrl, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
+	useNewUrlParser: true,
+	useCreateIndex: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false
 });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  console.log('Database connected');
+	console.log('Database connected');
 });
 
 const app = express();
@@ -46,27 +47,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 const secret = process.env.SECRET || 'hemlighet';
 
 const store = MongoStore.create({
-  mongoUrl: dbUrl,
-  touchAfter: 24 * 60 * 60,
-  secret,
+	mongoUrl: dbUrl,
+	touchAfter: 24 * 60 * 60,
+	secret
 });
 
-store.on('error', function (e) {
-  console.log('SESSION STORE ERROR', e);
+store.on('error', function(e) {
+	console.log('SESSION STORE ERROR', e);
 });
 
 const sessionConfig = {
-  store,
-  name: '_sess',
-  secret,
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    httpOnly: true,
-    // secure: true,
-    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-    maxAge: 1000 * 60 * 60 * 24 * 7,
-  },
+	store,
+	name: '_sess',
+	secret,
+	resave: false,
+	saveUninitialized: true,
+	cookie: {
+		httpOnly: true,
+		// secure: true,
+		expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+		maxAge: 1000 * 60 * 60 * 24 * 7
+	}
 };
 
 app.use(session(sessionConfig));
@@ -81,22 +82,23 @@ passport.deserializeUser(Anvandare.deserializeUser());
 app.use('/golfbanor', golfbanorRoutes);
 app.use('/golfdagbok', golfdagbokRoutes);
 app.use('/golfbanor/:id/omdome', omdomenRoutes);
+app.use('/', anvandareRoutes);
 
 app.get('/', (req, res) => {
-  res.render('start');
+	res.render('start');
 });
 
 app.all('*', (req, res, next) => {
-  next(new ExpressError('Page Not Found', 404));
+	next(new ExpressError('Page Not Found', 404));
 });
 
 app.use((err, req, res, next) => {
-  const { statusCode = 500 } = err;
-  if (!err.message) err.message = 'Oh no, Something Went Wrong';
-  res.status(statusCode).render('error', { err });
+	const { statusCode = 500 } = err;
+	if (!err.message) err.message = 'Oh no, Something Went Wrong';
+	res.status(statusCode).render('error', { err });
 });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`LISTENING ON PORT ${port}`);
+	console.log(`LISTENING ON PORT ${port}`);
 });

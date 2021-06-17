@@ -1,1 +1,19 @@
 <% layout('layouts/boilerplate') %>
+<form action="/registrera" method="POST" class="validated-form" novalidate>
+  <div class="mb-3">
+    <label class="form-label" for="anvandarnamn">Användarnamn</label>
+    <input class="form-control" type="text" name="anvandarnamn" id="anvandarnamn" required />
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="email">Email</label>
+    <input class="form-control" type="email" name="email" id="email" required />
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="losenord">Lösenord</label>
+    <input class="form-control" type="password" name="losenord" id="losenord" required />
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+  <button class="btn btn-success">Register</button>
+</form>
