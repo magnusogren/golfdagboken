@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 const Omdome = require('../models/omdome');
 const Golfbana = require('../models/golfbana');
 const catchAsync = require('../utils/catchAsync');
