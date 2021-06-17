@@ -7,12 +7,17 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
+const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const ExpressError = require('./utils/ExpressError');
+const MongoStore = require('connect-mongo');
+
+const Anvandare = require('./models/anvandare');
 
 const golfbanorRoutes = require('./routes/golfbanor');
 const golfdagbokRoutes = require('./routes/golfdagbok');
+const omdomenRoutes = require('./routes/omdomen');
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/golfdagboken';
 mongoose.connect(dbUrl, {
@@ -38,13 +43,44 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// passport.use(new LocalStrategy(User.authenticate()));
+const secret = process.env.SECRET || 'hemlighet';
 
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  touchAfter: 24 * 60 * 60,
+  secret,
+});
+
+store.on('error', function (e) {
+  console.log('SESSION STORE ERROR', e);
+});
+
+const sessionConfig = {
+  store,
+  name: '_sess',
+  secret,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    // secure: true,
+    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+  },
+};
+
+app.use(session(sessionConfig));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(Anvandare.authenticate()));
+
+passport.serializeUser(Anvandare.serializeUser());
+passport.deserializeUser(Anvandare.deserializeUser());
 
 app.use('/golfbanor', golfbanorRoutes);
 app.use('/golfdagbok', golfdagbokRoutes);
+app.use('/golfbanor/:id/omdome', omdomenRoutes);
 
 app.get('/', (req, res) => {
   res.render('start');

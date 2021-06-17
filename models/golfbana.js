@@ -93,6 +93,12 @@ const GolfbanaSchema = new Schema(
       type: String,
       required: false,
     },
+    omdomen: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Omdome',
+      },
+    ],
   },
   opts
 );
