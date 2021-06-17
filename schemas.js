@@ -45,3 +45,10 @@ module.exports.golfrundaSchema = Joi.object({
     sammanfattningBetyg: Joi.number().min(1).max(5),
   }).required(),
 });
+
+module.exports.omdomeSchema = Joi.object({
+  omdome: Joi.object({
+    betyg: Joi.number().min(1).max(5), //Kolla upp escapeHTML på några st.
+    text: Joi.string().required(), //Kolla upp escapeHTML på några st.
+  }).required(),
+});

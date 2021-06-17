@@ -1,6 +1,11 @@
 <% layout('layouts/boilerplate') %>
 <h1>Ändra golfrunda</h1>
-<form class="row g-3" method="POST" action="/golfdagbok/<%=golfrunda._id%>?_method=PUT">
+<form
+  class="row g-3 validated-form"
+  method="POST"
+  action="/golfdagbok/<%=golfrunda._id%>?_method=PUT"
+  novalidate
+>
   <div class="col-md-4">
     <label for="bana" class="form-label">Golfklubb</label>
     <select

@@ -19,9 +19,12 @@
       </div>
 
       <div class="navbar-nav ms-auto">
+        <% if(!currentUser) { %>
         <a class="nav-link" href="/loggain">Logga in</a>
         <a class="nav-link" href="/registrera">Registrera</a>
+        <% } else { %>
         <a class="nav-link" href="/loggaut">Logga ut</a>
+        <% } %>
 
         <form class="d-flex">
           <input

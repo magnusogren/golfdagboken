@@ -1,8 +1,8 @@
 <% layout('layouts/boilerplate') %>
 <form action="/registrera" method="POST" class="validated-form" novalidate>
   <div class="mb-3">
-    <label class="form-label" for="anvandarnamn">Användarnamn</label>
-    <input class="form-control" type="text" name="anvandarnamn" id="anvandarnamn" required />
+    <label class="form-label" for="username">Användarnamn</label>
+    <input class="form-control" type="text" name="username" id="username" required />
     <div class="valid-feedback">Looks good!</div>
   </div>
   <div class="mb-3">
@@ -11,8 +11,8 @@
     <div class="valid-feedback">Looks good!</div>
   </div>
   <div class="mb-3">
-    <label class="form-label" for="losenord">Lösenord</label>
-    <input class="form-control" type="password" name="losenord" id="losenord" required />
+    <label class="form-label" for="password">Lösenord</label>
+    <input class="form-control" type="password" name="password" id="password" required />
     <div class="valid-feedback">Looks good!</div>
   </div>
   <button class="btn btn-success">Register</button>

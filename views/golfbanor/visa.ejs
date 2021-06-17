@@ -65,20 +65,24 @@
         ></textarea>
         <div class="valid-feedback">Looks good!</div>
       </div>
+
       <button class="btn btn-success">Spara</button>
     </form>
     <% for(let omdome of golfbana.omdomen) { %>
-      <div class="card mb-3">
-        <div class="card-body">
-          <h5 class="card-title">Betyg: <%= omdome.betyg %></h5>
-          <p class="card-text">Omdöme: <%= omdome.text %></p>
-          
-          <form method="POST" action="/golfbanor/<%=golfbana._id%>/omdome/<%=omdome._id%>?_method=DELETE">
-            <button class="btn btn-sm btn-danger">Ta Bort</button>
-          </form>
-        </div>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Betyg: <%= omdome.betyg %></h5>
+        <p class="card-text">Omdöme: <%= omdome.text %></p>
+
+        <form
+          method="POST"
+          action="/golfbanor/<%=golfbana._id%>/omdome/<%=omdome._id%>?_method=DELETE"
+        >
+          <button class="btn btn-sm btn-danger">Ta Bort</button>
+        </form>
       </div>
-      <% } %>
+    </div>
+    <% } %>
   </div>
 </div>
 
@@ -88,5 +92,3 @@
 </script>
 
 <script src="/js/kartaEnBana.js"></script>
-
-
