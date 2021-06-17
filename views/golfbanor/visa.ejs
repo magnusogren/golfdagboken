@@ -72,45 +72,9 @@
         <div class="card-body">
           <h5 class="card-title">Betyg: <%= omdome.betyg %></h5>
           <p class="card-text">Omdöme: <%= omdome.text %></p>
+          
           <form method="POST" action="/golfbanor/<%=golfbana._id%>/omdome/<%=omdome._id%>?_method=DELETE">
-            <button
-            type="button"
-            class="btn btn-sm btn-danger"
-            data-bs-toggle="modal"
-            data-bs-target="#Modal"
-          >
-            Ta Bort
-          </button>
-
-          <!-- Modal -->
-          <div
-            class="modal fade"
-            id="Modal"
-            tabindex="-1"
-            aria-labelledby="ModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="ModalLabel">Radera omdöme</h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">Är du säker att du vill ta bort ditt omdöme?</div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Jag har ångrat mig!
-                  </button>
-                  <button type="submit" class="btn btn-danger">Ta Bort</button>
-                </div>
-              </div>
-            </div>
-          </div>
+            <button class="btn btn-sm btn-danger">Ta Bort</button>
           </form>
         </div>
       </div>
@@ -124,3 +88,5 @@
 </script>
 
 <script src="/js/kartaEnBana.js"></script>
+
+
