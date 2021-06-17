@@ -5,16 +5,27 @@ const Golfbana = require('../models/golfbana');
 const catchAsync = require('../utils/catchAsync');
 
 router.post('/', async (req, res) => {
-  const { id } = req.params;
-  console.log(id);
-  const golfbana = await Golfbana.findById(id);
-  const omdome = new Omdome(req.body.omdome);
-
-  console.log(req.params);
-  // golfbana.omdomen.push(omdome);
-
-  res.send(req.params);
+	const { id } = req.params;
+	const golfbana = await Golfbana.findById(id);
+	const omdome = new Omdome(req.body.omdome);
+	golfbana.omdomen.push(omdome);
+	await omdome.save();
+	await golfbana.save();
+	// console.log(golfbana, omdome);
+	res.redirect(`/golfbanor/${golfbana._id}`);
 });
+
+router.delete(
+	'/:omdomeId',
+	catchAsync(async (req, res) => {
+		const { id, omdomeId } = req.params;
+		console.log(req.params);
+		await Golfbana.findByIdAndUpdate(id, { $pull: { omdomen: omdomeId } });
+		await Omdome.findByIdAndDelete(req.params.omdomeId);
+		res.redirect(`/golfbanor/${id}`);
+		// res.send('TEST');
+	})
+);
 
 module.exports = router;
 
