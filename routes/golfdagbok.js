@@ -31,8 +31,10 @@ router.post(
 		const golfrunda = new Golfrunda(req.body.golfrunda);
 		const url = req.body.url;
 		golfrunda.bilder = { url };
+		golfrunda.spelare = req.user._id;
+		// console.log(golfrunda);
 		await golfrunda.save();
-		res.redirect('golfdagbok');
+		res.redirect(`golfdagbok/${golfrunda._id}`);
 	})
 );
 
@@ -40,8 +42,8 @@ router.get(
 	'/:id',
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
-		const golfrunda = await Golfrunda.findById(id);
-		// console.log(golfrunda);
+		const golfrunda = await Golfrunda.findById(id).populate('spelare');
+		console.log(req.session, req.user);
 		res.render('golfdagbok/visa', { golfrunda });
 	})
 );

@@ -6,6 +6,7 @@
     <div class="card-body">
       <h5 class="card-title"><%= golfrunda.bana %></h5>
       <p class="card-text"><%= golfrunda.noteringar %></p>
+      <small class="text-muted"><%= golfrunda.spelare.username%></small>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Datum: <%= golfrunda.datum.toLocaleDateString() %></li>
