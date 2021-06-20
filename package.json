@@ -9,6 +9,7 @@
 	"author": "Magnus Ogren",
 	"license": "ISC",
 	"dependencies": {
+		"connect-flash": "^0.1.1",
 		"connect-mongo": "^4.4.1",
 		"dateformat": "^4.5.1",
 		"dotenv": "^10.0.0",

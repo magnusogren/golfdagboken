@@ -50,6 +50,7 @@ router.post(
     //   await uppdateradGolfbana.save();
     // }
     await golfrunda.save();
+    req.flash('succe', 'Ny golfrunda sparad');
     res.redirect(`golfdagbok/${golfrunda._id}`);
     // res.send('test');
   })
@@ -97,6 +98,7 @@ router.put(
     const updateradgolfrunda = await Golfrunda.findByIdAndUpdate(id, { ...req.body.golfrunda });
     console.log(updateradgolfrunda);
     await updateradgolfrunda.save();
+    req.flash('succe', 'Golfrundan uppdaterades');
     res.redirect(`/golfdagbok/${updateradgolfrunda._id}`);
   })
 );
@@ -108,6 +110,7 @@ router.delete(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Golfrunda.findByIdAndDelete(id);
+    req.flash('succe', 'Golfrundan raderades');
     res.redirect('/golfdagbok');
   })
 );

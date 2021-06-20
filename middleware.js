@@ -1,6 +1,7 @@
 const { golfrundaSchema, omdomeSchema } = require('./schemas.js');
 const ExpressError = require('./utils/ExpressError');
 const Golfrunda = require('./models/golfrunda');
+const Omdome = require('./models/omdome');
 
 module.exports.valideraGolfrunda = (req, res, next) => {
   const { error } = golfrundaSchema.validate(req.body);
@@ -35,6 +36,16 @@ module.exports.arSpelare = async (req, res, next) => {
   const golfrunda = await Golfrunda.findById(id);
   console.log(golfrunda.spelare);
   if (req.user._id === undefined || !golfrunda.spelare.equals(req.user._id)) {
+    // req.flash('error', 'permission denied');
+    return res.redirect(`/golfbanor`);
+  }
+  next();
+};
+
+module.exports.arOmdomesSkapare = async (req, res, next) => {
+  const { omdomeId } = req.params;
+  const omdome = await Omdome.findById(omdomeId);
+  if (req.user._id === undefined || !omdome.spelare.equals(req.user._id)) {
     // req.flash('error', 'permission denied');
     return res.redirect(`/golfbanor`);
   }
