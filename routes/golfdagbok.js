@@ -35,15 +35,21 @@ router.post(
     const url = req.body.url;
     golfrunda.bilder = { url };
     golfrunda.spelare = req.user._id;
-    if (betyg !== 1 && text !== '') {
-      const omdome = new Omdome();
-      omdome.text = text;
-      omdome.betyg = betyg;
-      const golfbana = await Golfbana.find({ name: `${golfrunda.bana}` });
-      golfbana.omdomen.push(omdome);
-    }
+    // if (betyg !== 1 && text !== '') {
+    //   const omdome = new Omdome();
+    //   omdome.text = text;
+    //   omdome.betyg = betyg;
+    //   // console.log(omdome);
+    //   // console.log(golfrunda.bana);
+    //   const golfbana = await Golfbana.find({ name: `${golfrunda.bana}` });
+    //   golfbana[0].omdomen.push(omdome);
+    //   const uppdateradGolfbana = Golfbana.findByIdAndUpdate(golfbana[0]._id, golfbana[0]);
+    //   console.log(uppdateradGolfbana);
+    //   await uppdateradGolfbana.save();
+    // }
     await golfrunda.save();
     res.redirect(`golfdagbok/${golfrunda._id}`);
+    // res.send('test');
   })
 );
 

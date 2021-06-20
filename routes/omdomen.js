@@ -12,6 +12,7 @@ router.post(
     const { id } = req.params;
     const golfbana = await Golfbana.findById(id);
     const omdome = new Omdome(req.body.omdome);
+    omdome.spelare = req.user._id;
     golfbana.omdomen.push(omdome);
     await omdome.save();
     await golfbana.save();
