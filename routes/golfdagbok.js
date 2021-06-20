@@ -3,13 +3,13 @@ const router = express.Router();
 const Golfrunda = require('../models/golfrunda');
 const Golfbana = require('../models/golfbana');
 const Omdome = require('../models/omdome');
-// const { updateCampground } = require('../../YelpCamp/magnusVersion/controllers/campgrounds');
-const { valideraGolfrunda } = require('../middleware');
+const { valideraGolfrunda, arInloggad, arSpelare } = require('../middleware');
 const catchAsync = require('../utils/catchAsync');
 const golfbana = require('../models/golfbana');
 
 router.get(
   '/',
+  arInloggad,
   catchAsync(async (req, res) => {
     const golfbanor = await Golfbana.find({});
     const golfrundor = await Golfrunda.find({});
@@ -20,6 +20,7 @@ router.get(
 
 router.get(
   '/ny',
+  arInloggad,
   catchAsync(async (req, res) => {
     const golfbanor = await Golfbana.find({});
     res.render('golfdagbok/ny', { golfbanor });
@@ -28,6 +29,7 @@ router.get(
 
 router.post(
   '/',
+  arInloggad,
   valideraGolfrunda,
   catchAsync(async (req, res, next) => {
     const golfrunda = new Golfrunda(req.body.golfrunda);
@@ -62,16 +64,20 @@ router.post(
 
 router.get(
   '/:id',
+  arInloggad,
+  arSpelare,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const golfrunda = await Golfrunda.findById(id).populate('spelare');
-    console.log(req.session, req.user);
+    // console.log(req.session, req.user);
     res.render('golfdagbok/visa', { golfrunda });
   })
 );
 
 router.get(
   '/:id/andra',
+  arInloggad,
+  arSpelare,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const golfbanor = await Golfbana.find({});
@@ -84,6 +90,8 @@ router.get(
 router.put(
   '/:id',
   valideraGolfrunda,
+  arInloggad,
+  arSpelare,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const updateradgolfrunda = await Golfrunda.findByIdAndUpdate(id, { ...req.body.golfrunda });
@@ -95,6 +103,8 @@ router.put(
 
 router.delete(
   '/:id',
+  arInloggad,
+  arSpelare,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Golfrunda.findByIdAndDelete(id);

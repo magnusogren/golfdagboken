@@ -23,6 +23,7 @@
     <div class="mb-3" id="map" style="height: 300px"></div>
     <% } %>
     <!--  -->
+    <% if(currentUser) { %>
     <h2>Lämna ett omdöme</h2>
     <form
       method="POST"
@@ -68,18 +69,19 @@
 
       <button class="btn btn-success">Spara</button>
     </form>
-    <% for(let omdome of golfbana.omdomen) { %>
+    <% } %> <% for(let omdome of golfbana.omdomen) { %>
     <div class="card mb-3">
       <div class="card-body">
         <h5 class="card-title">Betyg: <%= omdome.betyg %></h5>
         <p class="card-text">Omdöme: <%= omdome.text %></p>
         <p class="card-text">Spelare: <%= omdome.spelare.username %></p>
-
+        <% if(currentUser && omdome.spelare.equals(currentUser._id)) { %>
         <form
           method="POST"
           action="/golfbanor/<%=golfbana._id%>/omdome/<%=omdome._id%>?_method=DELETE"
         >
           <button class="btn btn-sm btn-danger">Ta Bort</button>
+          <% } %>
         </form>
       </div>
     </div>

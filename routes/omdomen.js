@@ -3,10 +3,11 @@ const router = express.Router({ mergeParams: true });
 const Omdome = require('../models/omdome');
 const Golfbana = require('../models/golfbana');
 const catchAsync = require('../utils/catchAsync');
-const { valideraOmdome } = require('../middleware');
+const { valideraOmdome, arInloggad } = require('../middleware');
 
 router.post(
   '/',
+  arInloggad,
   valideraOmdome,
   catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -23,6 +24,7 @@ router.post(
 
 router.delete(
   '/:omdomeId',
+  arInloggad,
   catchAsync(async (req, res) => {
     const { id, omdomeId } = req.params;
     console.log(req.params);

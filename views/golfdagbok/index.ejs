@@ -2,7 +2,8 @@
 <h1>Golfdagbok</h1>
 <a class="btn btn-outline-primary mb-3" href="/golfdagbok/ny">Ny golfrunda</a>
 <div class="col-md-4">
-  <% for(let golfrunda of golfrundor) { %>
+  <% for(let golfrunda of golfrundor) { %> <% if(currentUser &&
+  golfrunda.spelare.equals(currentUser._id)) { %>
   <div class="card mb-3">
     <div class="card-header">
       <%= golfrunda.datum.toLocaleDateString()%>
@@ -16,5 +17,5 @@
       <li class="list-group-item">Betyg: <%= golfrunda.sammanfattningBetyg %></li>
     </ul>
   </div>
-  <% } %>
+  <% } %> <% } %>
 </div>
