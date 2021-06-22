@@ -1,3 +1,47 @@
-<% layout('layouts/boilerplate') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Golfdagboken</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/styles/start.css" />
+  </head>
+  <body>
+    <div class="main startFonster">
+      <h1>Välkommen till Golfdagboken!</h1>
+      <p>Här kan du spara din golfdagbok digitalt och hitta information om Sveriges golfbanor</p>
+      <p>Logga in för att se din golfdagbok</p>
 
-<h1>Startsida</h1>
+      <form action="/loggain" method="POST" class="validated-form" novalidate>
+        <div class="mb-3">
+          <label class="form-label" for="username">Användarnamn</label>
+          <input class="form-control" type="text" name="username" id="username" required />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="password">Lösenord</label>
+          <input class="form-control" type="password" name="password" id="password" required />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <button class="btn btn-success mb-3">Logga in</button>
+      </form>
+      <p>
+        Vill du skapa din egen golfdagbok? <br />
+        Registrera dig <a href="/registrera">HÄR</a>
+      </p>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/validateForms.js"></script>
+  </body>
+</html>
